@@ -1,0 +1,28 @@
+[user]
+	name = Yuri Lapitsky
+	email = lapitsky@gmail.com
+[core]
+	autocrlf = false
+[commit]
+  template = ~/.gitmessage
+[gui]
+	recentrepo = /Users/ylapitsky/code/iloan/rolodex
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[merge]
+	tool = opendiff
+;[diff]
+	;tool = opendiff
+	;external = /Users/ylapitsky/bin/git-diff-cmd.sh
+[credential]
+	helper = osxkeychain
+[alias]
+	please = push --force-with-lease
+[diff "daff-csv"]
+	command = daff diff --git
+[merge "daff-csv"]
+	name = daff tabular csv merge
+	driver = daff merge --output %A %O %A %B
