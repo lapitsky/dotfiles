@@ -51,7 +51,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails ruby rake)
+plugins=(git rails ruby rake zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,6 +91,7 @@ export EDITOR=vim
 alias be='bundle exec'
 alias reset_db='be rake db:terminate db:drop db:create db:migrate db:seed'
 alias ctags="`brew --prefix`/bin/ctags"
+alias dprodc="datica --email yuri.lapitsky@patientiq.io -E production console app 'bundle exec rails console'"
 
 # Browsermob (c) Ivan
 export JAVA_HOME=$(/usr/libexec/java_home)
@@ -101,3 +102,13 @@ export PATH=$PATH:$GOPATH/bin
 export PATH="$PATH:$HOME/.rvm/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+eval "$(rbenv init -)"
+
+alias tmux="TERM=screen-256color-bce tmux"
+
+export CH_API_TOKEN="6021f614-056e-4593-b2ab-6d5bf635ed15"
+export SENTRY_AUTH_TOKEN=2d27523a04954696a330546e757e5c0c610837abedb543d38e4759b40567b7ef
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#686868"
+export PIVOTAL_API_TOKEN="079c3c3555a06758d3ec185c83b4dea3"
+export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'

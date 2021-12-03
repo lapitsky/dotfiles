@@ -3,11 +3,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'jgdavey/tslime.vim'
 Plugin 'junegunn/fzf'
 call vundle#end()
 filetype plugin indent on
 
-let g:rspec_command = "!bin/rspec {spec}"
+let g:rspec_command = 'call Send_to_Tmux("bin/rspec {spec} --profile\n")'
+" let g:rspec_command = "!bin/rspec {spec}"
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -47,9 +49,9 @@ set cursorcolumn
 set statusline+=%f\ %l\:%c
 set backspace=indent,eol,start
 
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+" let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+" let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+" let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 let g:NERDSpaceDelims = 1
 
@@ -57,3 +59,7 @@ let g:NERDSpaceDelims = 1
 :set foldmethod=manual
 :set lazyredraw
 :set ttyfast
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
